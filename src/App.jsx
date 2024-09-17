@@ -17,7 +17,7 @@ function App() {
     }
 
     for (let i = 0; i < length; i++) {
-      let char = Math.floor(Math.random() * str.length + 1);
+      let char = Math.floor(Math.random() * str.length + 1); 
       pass += str.charAt(char);
     }
     setPassword(pass);
@@ -25,11 +25,13 @@ function App() {
   useEffect(() => {
     passwordGenerator();
   }, [length, number, symbols, passwordGenerator]);
+
+  // function to copy password 
   const copyPassword = useCallback(() => {
-    passwordRef.current?.select();
-    passwordRef.current?.selectSelectionRange(0, 30);
+    passwordRef.current?.select(); // will select the password
     window.navigator.clipboard.writeText(password);
   }, [password]);
+
   return (
     <>
       <div className="w-full max-w-md mx-auto rounded-lg my-8 py-4 px-4 text-blue-500 bg-gray-800 shadow-md">
@@ -81,8 +83,7 @@ function App() {
             />
           </div>
         </div>
-        <div className="flex gap-4 my-3 " >
-      
+        <div className="flex gap-4 my-3 ">
           <button
             className="bg-blue-400 rounded-lg py-2 px-4 text-black "
             onClick={passwordGenerator}
